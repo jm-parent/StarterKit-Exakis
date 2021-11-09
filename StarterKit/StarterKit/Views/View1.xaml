@@ -4,6 +4,7 @@
              x:Class="StarterKit.Views.View1"
               xmlns:vm="clr-namespace:StarterKit.ViewModels"
              x:TypeArguments="vm:View1ViewModel"  
+                 x:DataType="vm:View1ViewModel"
              >
       <StackLayout>
           <Label Text="Hello Xamarin.Forms!" />

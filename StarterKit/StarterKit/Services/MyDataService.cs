@@ -7,9 +7,11 @@ namespace StarterKit.Services
 {
 	public class MyDataService : IMyDataService
 	{
+		private int nb = 0;
 		public string GetMessage()
 		{
-			return "This is from MyDataService";
+			++nb;
+			return nb.ToString();
 		}
 	}
 }

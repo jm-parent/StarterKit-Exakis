@@ -1,6 +1,9 @@
 ﻿using Autofac;
+using StarterKit.Services;
+using StarterKit.Services.Base;
 using System;
 using System.Reflection;
+using TinyIoC;
 using TinyMvvm;
 using TinyMvvm.Autofac;
 using TinyMvvm.Forms;
@@ -15,14 +18,15 @@ namespace StarterKit
 		public App()
 		{
 			InitializeComponent();
-			InitServices();
-
+			RegisterServices(TinyIoCContainer.Current);
+			InitTinyMvvm();
 
 			MainPage = new AppShell();
 		}
 
-		private void InitServices()
+		private void InitTinyMvvm()
 		{
+			//Setup View/ViewModel Links
 			var navigationHelper = new ShellNavigationHelper();
 
 			var currentAssembly = Assembly.GetExecutingAssembly();
@@ -43,7 +47,10 @@ namespace StarterKit
 
 			Resolver.SetResolver(new AutofacResolver(container));
 		}
-
+		private void RegisterServices(TinyIoCContainer container)
+		{
+			container.Register<IMyDataService, MyDataService>();
+		}
 		protected override void OnStart()
 		{
 		}

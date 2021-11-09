@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StarterKit.Services.Base
 {
-	internal interface IMyDataService
+	public interface IMyDataService
 	{
 			string GetMessage();
 	}
