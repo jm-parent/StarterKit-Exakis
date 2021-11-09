@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:starterkit="clr-namespace:StarterKit" 
+       xmlns:views="clr-namespace:StarterKit.Views"
+         xmlns:MaterialIconFont="clr-namespace:StarterKit.Helpers;assembly=StarterKit"
+       x:Class="StarterKit.AppShell"
+       TabBarForegroundColor="#000000"
+       TabBarTitleColor="#000000"
+       TabBarUnselectedColor="#88000000"
+       >
+    <TabBar>
+        <Tab Title="MainPage" Route="MainPage">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialDesignIcon" Glyph="{x:Static MaterialIconFont:IconFont.HomeAutomation}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate starterkit:MainPage}" />
+        </Tab>
+        <ShellContent Title="View1" Route="View1">
+            <views:View1/>
+        </ShellContent>
+    </TabBar>
+</Shell>
