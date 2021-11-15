@@ -1,0 +1,16 @@
+name: CI on Push and Pull Request
+on: [push, pull_request]
+jobs:
+  Android:
+    runs-on: macos-latest    
+    steps:
+    - uses: actions/checkout@v1      
+    - name: Android
+      run: |
+        cd StarterKit
+        nuget restore
+        msbuild StarterKit.Android/StarterKit.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Debug 
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Android App
+        path: StarterKit/StarterKit.Android/bin/Debug/com.companyname.starterkit-Signed.apk        
