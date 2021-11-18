@@ -4,14 +4,10 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="StarterKit.Views.Popups.MyPopupView"
             x:Name="ThePopup"
-            Size="300,300"
+            Size="200,200"
             >
-    <Frame BackgroundColor="Transparent">
-        <Frame BackgroundColor="DarkGray" Margin="150" CornerRadius="8" x:Name="TheContent">
-            <StackLayout>
-                <Label Text="Hello from popup!" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="WhiteSmoke" MaxLines="1"  x:Name="TheLabel" FontSize="1"/>
-            <Button Text="Close me" Clicked="Button_Clicked" x:Name="TheButton" FontSize="1" />
-            </StackLayout>
-        </Frame>
-    </Frame>
+    <StackLayout BackgroundColor="White">
+        <Label Text="Hello from popup!" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+        <Button Text="Close me" Clicked="Button_Clicked" />
+    </StackLayout>
 </popups:MyOwnPopup>
