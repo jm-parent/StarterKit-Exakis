@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvvm:ShellViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:mvvm="clr-namespace:TinyMvvm.Forms;assembly=TinyMvvm.Forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:StarterKit.ViewModels"
+                    x:Class="StarterKit.Views.MainView"
+                    x:DataType="viewmodels:MainViewModel"
+                    x:TypeArguments="viewmodels:MainViewModel">
+    <StackLayout>
+        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsRunning="False" IsVisible="{Binding IsBusy}" />
+        <Button Text="Login" Command="{Binding Login}" />
+        <CollectionView x:Name="Names" ItemsSource="{Binding Names}" IsVisible="{Binding IsNotBusy}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <ContentView Padding=" 10">
+                        <ContentView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference Names}, Path=BindingContext.Details}" CommandParameter="{Binding}" />
+                        </ContentView.GestureRecognizers>
+                        <Label Text="{Binding }" />
+                    </ContentView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</mvvm:ShellViewBase>

@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace StarterKit.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class View1
+	public partial class MainView
 	{
-		public View1()
+		public MainView()
 		{
 			InitializeComponent();
 		}

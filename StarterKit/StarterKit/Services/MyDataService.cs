@@ -1,6 +1,7 @@
 ﻿using StarterKit.Services.Base;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace StarterKit.Services
@@ -12,6 +13,16 @@ namespace StarterKit.Services
 		{
 			++nb;
 			return nb.ToString();
+		}
+
+		public ObservableCollection<string> GetListNames()
+		{
+			return new ObservableCollection<string>(new List<string>()
+			{
+				"Daniel",
+				"Ella",
+				"Willner"
+			});
 		}
 	}
 }

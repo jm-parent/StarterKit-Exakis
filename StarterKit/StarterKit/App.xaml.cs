@@ -30,6 +30,7 @@ namespace StarterKit
 			var navigationHelper = new ShellNavigationHelper();
 
 			var currentAssembly = Assembly.GetExecutingAssembly();
+
 			navigationHelper.RegisterViewsInAssembly(currentAssembly);
 
 			var containerBuilder = new ContainerBuilder();
@@ -46,6 +47,8 @@ namespace StarterKit
 			var container = containerBuilder.Build();
 
 			Resolver.SetResolver(new AutofacResolver(container));
+
+			MainPage = new AppShell();
 		}
 		private void RegisterServices(TinyIoCContainer container)
 		{

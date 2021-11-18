@@ -9,14 +9,22 @@
        TabBarUnselectedColor="#88000000"
        >
     <TabBar>
-        <Tab Title="MainPage" Route="MainPage">
+        <Tab Title="Home" Route="home">
             <Tab.Icon>
                 <FontImageSource FontFamily="MaterialDesignIcon" Glyph="{x:Static MaterialIconFont:IconFont.HomeAutomation}" />
             </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate starterkit:MainPage}" />
+            <ShellContent ContentTemplate="{DataTemplate views:MainView}" />
         </Tab>
-        <ShellContent Title="View1" Route="View1">
-            <views:View1/>
+
+        <Tab Title="AboutView" Route="AboutView">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialDesignIcon" Glyph="{x:Static MaterialIconFont:IconFont.Information}" />
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate views:AboutView}">
+        </ShellContent>
+        </Tab>
+        <ShellContent Route="LoginView">
+            <views:AboutView />
         </ShellContent>
     </TabBar>
 </Shell>
