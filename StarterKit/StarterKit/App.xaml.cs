@@ -52,7 +52,26 @@ namespace StarterKit
 		}
 		private void RegisterServices(TinyIoCContainer container)
 		{
-			container.Register<IMyDataService, MyDataService>();
+			// This is a single instance registration.
+			// When I ask the container for an IAspectDependency, is will always provide the same GreetingAspect.
+			//TinyIoCContainer.Current.Register<IAspectDependency>(new GreetingAspect());
+
+			// This is a concrete type registration.
+			// When I ask the container for one of these, it will build me one each time.
+			//TinyIoCContainer.Current.Register<GreetingWithDependencyCi>();
+
+			// By default we register concrete types as 
+			// multi-instance, and interfaces as singletons
+			//TinyIOC.Container.Register<MyConcreteType>(); // Multi-instance
+			//TinyIOC.Container.Register<IMyInterface, MyConcreteType>(); // Singleton 
+
+			// Fluent API allows us to change that behaviour
+			//TinyIOC.Container.Register<MyConcreteType>().AsSingleton(); // Singleton
+			//TinyIOC.Container.Register<IMyInterface, MyConcreteType>().AsMultiInstance(); // Multi-instance
+
+
+
+			container.Register<IMyDataService>(new MyDataService());
 		}
 		protected override void OnStart()
 		{

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using StarterKit.Services;
+using StarterKit.Services.Base;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using TinyIoC;
 using TinyMvvm;
 
 namespace StarterKit.ViewModels
@@ -17,24 +20,16 @@ namespace StarterKit.ViewModels
             Date = dateParameter.ToString();
         }
 
-        private string name;
-        public string Name
-        {
-            get => name;
-            set => Set(ref name, value);
-        }
+        public string Name { get; set; }
+        public string Date { get; set; }
 
-        private string date;
-        public string Date
-        {
-            get => date;
-            set => Set(ref date, value);
-        }
 
-        private ICommand back;
-        public ICommand Back => back ?? new TinyCommand(async () =>
+        public string LabelValue { get; set; }
+
+        public ICommand UpdateLabel => new TinyCommand(() =>
         {
-            await Navigation.BackAsync();
+            var myDataService = TinyIoCContainer.Current.Resolve<IMyDataService>();
+            LabelValue = myDataService.GetMessage() ;
 
         });
     }
