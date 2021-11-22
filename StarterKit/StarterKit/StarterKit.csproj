@@ -21,12 +21,14 @@
   <ItemGroup>
     <PackageReference Include="ConfigureAwait.Fody" Version="3.3.1" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
-    <PackageReference Include="TinyMvvm.Autofac" Version="3.0.1" />
-    <PackageReference Include="TinyMvvm.Forms" Version="3.0.1" />
-    <PackageReference Include="TinyMvvm.TinyIoC" Version="3.0.1" />
+    <PackageReference Include="TinyMvvm.Autofac" Version="4.0.1-pre2" />
+    <PackageReference Include="TinyMvvm.Forms" Version="4.0.1-pre2" />
+    <PackageReference Include="TinyMvvm.TinyIoC" Version="4.0.1-pre2" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="1.3.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms.DebugRainbows" Version="1.1.4" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
   </ItemGroup>
 
   <ItemGroup>

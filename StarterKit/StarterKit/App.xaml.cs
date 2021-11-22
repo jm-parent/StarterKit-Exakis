@@ -7,7 +7,6 @@ using TinyIoC;
 using TinyMvvm;
 using TinyMvvm.Autofac;
 using TinyMvvm.Forms;
-using TinyMvvm.IoC;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -31,13 +30,14 @@ namespace StarterKit
 
 			var currentAssembly = Assembly.GetExecutingAssembly();
 
-			navigationHelper.RegisterViewsInAssembly(currentAssembly);
+			navigationHelper.InitViewModelNavigation(currentAssembly);
 
 			var containerBuilder = new ContainerBuilder();
 
 			containerBuilder.RegisterInstance<INavigationHelper>(navigationHelper);
 
 			var appAssembly = typeof(App).GetTypeInfo().Assembly;
+
 			containerBuilder.RegisterAssemblyTypes(appAssembly)
 				   .Where(x => x.IsSubclassOf(typeof(Page)));
 
@@ -45,7 +45,7 @@ namespace StarterKit
 				   .Where(x => x.IsSubclassOf(typeof(ViewModelBase)));
 
 			var container = containerBuilder.Build();
-
+			
 			Resolver.SetResolver(new AutofacResolver(container));
 
 			MainPage = new AppShell();

@@ -3,8 +3,9 @@
                  xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:StarterKit.ViewModels"
              x:Class="StarterKit.Views.AboutView"
-             x:DataType="viewmodels:AboutViewModel"             >
+             x:DataType="viewmodels:AboutViewModel"     
+             x:TypeArguments="viewmodels:AboutViewModel">
         <Grid>
-            <Button Text="Go home!" Command="{Binding Home}" />
+            <Button Text="Go home!" VerticalOptions="Center" Command="{Binding Home}" />
         </Grid>
 </forms:ViewBase>

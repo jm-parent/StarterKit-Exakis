@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<mvvm:ShellViewBase xmlns="http://xamarin.com/schemas/2014/forms"
-               xmlns:mvvm="clr-namespace:TinyMvvm.Forms;assembly=TinyMvvm.Forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:StarterKit.ViewModels"
-                    x:Class="StarterKit.Views.DetailsView"
-                     x:TypeArguments="viewmodels:DetailsViewModel"
-               x:DataType="viewmodels:DetailsViewModel">
+<mvvm:ShellViewBase 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:mvvm="clr-namespace:TinyMvvm.Forms;assembly=TinyMvvm.Forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:StarterKit.ViewModels"
+    x:Class="StarterKit.Views.DetailsView"
+    x:TypeArguments="vm:DetailsViewModel">
     <StackLayout Padding="10">
         <Label Text="{Binding Name}" />
         <Label Text="{Binding Date}" />
-        <Button Text="Back" Command="{Binding Back}" />
     </StackLayout>
 </mvvm:ShellViewBase>

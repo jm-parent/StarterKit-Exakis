@@ -8,7 +8,7 @@ namespace StarterKit.ViewModels
 
         public ICommand Home => new TinyCommand(async () =>
         {
-            await Navigation.NavigateToAsync("//home");
+            await Navigation.NavigateToAsync("//TabHome/home");
         });
 
     }

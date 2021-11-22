@@ -1,24 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <mvvm:ShellViewBase xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:mvvm="clr-namespace:TinyMvvm.Forms;assembly=TinyMvvm.Forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:StarterKit.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:StarterKit.ViewModels" xmlns:behaviors="clr-namespace:StarterKit.Behaviors"
                     x:Class="StarterKit.Views.MainView"
                     x:DataType="viewmodels:MainViewModel"
+                     xmlns:rainbows="clr-namespace:Xamarin.Forms.DebugRainbows;assembly=Xamarin.Forms.DebugRainbows" xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                    rainbows:DebugRainbow.ShowColors="False"
                     x:TypeArguments="viewmodels:MainViewModel">
     <StackLayout>
-        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsRunning="False" IsVisible="{Binding IsBusy}" />
+        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsRunning="False" IsVisible="{Binding IsBusy}" Color="Red" />
         <Button Text="Login" Command="{Binding Login}" />
-        <CollectionView x:Name="Names" ItemsSource="{Binding Names}" IsVisible="{Binding IsNotBusy}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <ContentView Padding=" 10">
-                        <ContentView.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding Source={x:Reference Names}, Path=BindingContext.Details}" CommandParameter="{Binding}" />
-                        </ContentView.GestureRecognizers>
-                        <Label Text="{Binding }" />
-                    </ContentView>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+             Command="{Binding RefreshCommand}">
+            <CollectionView x:Name="NamesList" ItemsSource="{Binding Names}" ItemsUpdatingScrollMode="KeepItemsInView" > 
+                <CollectionView.ItemTemplate >
+                    <DataTemplate x:DataType="x:String">
+                        <pancakeview:PancakeView Padding="6" Margin="2">
+                            <Label Text="{Binding}" TextColor="Black"  />
+                            <pancakeview:PancakeView.Behaviors>
+                                <behaviors:ENViewTappedBehaviors AnimationType="ScaleDown" Command="{Binding BindingContext.Details,Source={x:Reference NamesList}}" CommandParameter="{Binding}"  />
+                                </pancakeview:PancakeView.Behaviors>
+                        </pancakeview:PancakeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+      
     </StackLayout>
 </mvvm:ShellViewBase>

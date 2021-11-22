@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TinyMvvm;
@@ -33,7 +31,8 @@ namespace StarterKit.ViewModels
             set => Set(ref date, value);
         }
 
-        public ICommand Back => new TinyCommand(async () =>
+        private ICommand back;
+        public ICommand Back => back ?? new TinyCommand(async () =>
         {
             await Navigation.BackAsync();
 
