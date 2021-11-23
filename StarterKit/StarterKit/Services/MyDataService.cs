@@ -8,10 +8,6 @@ namespace StarterKit.Services
 {
 	public class MyDataService : IMyDataService
 	{
-        public MyDataService()
-        {
-			var aze = 0;
-        }
 		private int nb;
 		public string GetMessage()
 		{

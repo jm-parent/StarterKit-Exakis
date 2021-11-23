@@ -9,10 +9,6 @@
     <StackLayout Padding="10">
         <Label Text="{Binding Name}" />
         <Label Text="{Binding Date}" />
-        <BoxView BackgroundColor="Black" HeightRequest="2" Margin="5"/>
-        <BoxView BackgroundColor="Black" HeightRequest="2" Margin="5"/>
-        <BoxView BackgroundColor="Black" HeightRequest="2" Margin="5"/>
-        <BoxView BackgroundColor="Black" HeightRequest="2" Margin="5"/>
         <Button Command="{Binding UpdateLabel}" Text="UpdateLabel"/>
         <Label Text="{Binding LabelValue}"/>
     </StackLayout>
