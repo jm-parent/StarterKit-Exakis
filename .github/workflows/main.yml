@@ -1,16 +1,43 @@
 name: CI on Push and Pull Request
+
 on: [push, pull_request]
+
 jobs:
-  Android:
-    runs-on: macos-latest    
+  Practice:
+    runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v1      
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
+    - name: Show what in there
+      run: |
+        ls
+    - name: Show what it's inside
+      run: |
+        cd ..
+        ls
+        
+  Android:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
     - name: Android
       run: |
-        cd StarterKit
+        cd StarterKit-Exakis
         nuget restore
-        msbuild StarterKit.Android/StarterKit.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Debug 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: Android App
-        path: StarterKit/StarterKit.Android/bin/Debug/com.companyname.starterkit-Signed.apk        
+        cd StarterKit-Exakis.Android
+        msbuild StarterKit-Exakis.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+        
+  iOS:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: iOS
+      run: |
+        cd StarterKit-Exakis
+        nuget restore
+        msbuild StarterKit-Exakis.iOS/StarterKit-Exakis.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
