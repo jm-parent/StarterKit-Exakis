@@ -4,9 +4,7 @@ on: [push, pull_request]
 
 jobs:
   Practice:
-
     runs-on: macos-latest
-    
     steps:
     - uses: actions/checkout@v1
     - name: Run a one-line script
@@ -22,28 +20,22 @@ jobs:
       run: |
         cd ..
         ls
+        
   Android:
-
     runs-on: macos-latest
-    
     steps:
-
     - uses: actions/checkout@v1
-      
     - name: Android
       run: |
         cd StarterKit-Exakis
         nuget restore
         cd StarterKit-Exakis.Android
         msbuild StarterKit-Exakis.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+        
   iOS:
-
     runs-on: macos-latest
-    
     steps:
-
     - uses: actions/checkout@v1
-      
     - name: iOS
       run: |
         cd StarterKit-Exakis
