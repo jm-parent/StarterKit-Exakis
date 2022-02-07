@@ -16,6 +16,14 @@ jobs:
     - name: Show what in there
       run: |
         ls
+    - name: Test some CD Android
+      run: |
+        cd StarterKit/StarterKit.Android
+        ls
+    - name: Test some CD iOS
+      run: |
+       cd StarterKit/StarterKit.iOS
+        ls
     - name: Show what it's inside
       run: |
         cd ..
@@ -28,7 +36,7 @@ jobs:
     - name: Android
       run: |
         nuget restore
-        cd StarterKit.Android
+        cd StarterKit/StarterKit.Android
         msbuild StarterKit.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
         
   iOS:
@@ -38,4 +46,4 @@ jobs:
     - name: iOS
       run: |
         nuget restore
-        msbuild StarterKit.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
+        msbuild StarterKit/StarterKit.iOS/StarterKit.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
