@@ -27,10 +27,10 @@ jobs:
     - uses: actions/checkout@v1
     - name: Android
       run: |
-        cd StarterKit-Exakis
+        cd StarterKit
         nuget restore
-        cd StarterKit-Exakis.Android
-        msbuild StarterKit-Exakis.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
+        cd StarterKit.Android
+        msbuild StarterKit.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
         
   iOS:
     runs-on: macos-latest
@@ -38,6 +38,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: iOS
       run: |
-        cd StarterKit-Exakis
+        cd StarterKit
         nuget restore
-        msbuild StarterKit-Exakis.iOS/StarterKit-Exakis.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
+        msbuild StarterKit.iOS/StarterKit.iOS.csproj /verbosity:normal /t:Rebuild /p:Platform=iPhoneSimulator /p:Configuration=Debug
